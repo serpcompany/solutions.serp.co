@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { ref } from 'vue';
+
   defineProps<{
     videos: {
       personName: string;
@@ -8,6 +10,14 @@
       videoId: string;
     }[];
   }>();
+
+  const isLoaded = ref(false);
+  const video = ref();
+
+  function stateChange(event: { data: number }) {
+    const isPlaying = event.data === 1;
+    // You can handle the state change here
+  }
 </script>
 
 <template>

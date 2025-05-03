@@ -905,7 +905,9 @@
     isPlaying.value = event.data === 1;
   }
 
-  const links = ref([
+  import type { ButtonProps } from '@nuxt/ui';
+
+  const links = ref<ButtonProps[]>([
     {
       label: 'Get started',
       to: '/discovery/',
