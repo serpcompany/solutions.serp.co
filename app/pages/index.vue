@@ -1,247 +1,979 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryCollection('content').first())
-if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
-}
+  const testimonials = [
+    {
+      testimonial:
+        'Foremost experts in SEO. I am always looking forward to the info provide. The Strategies are consistently helping us get results',
+      personName: 'Adriaan Van Swieten',
+      businessName: '100 Danish',
+      positionAtCompany: 'Director',
+      personAvatar:
+        'https://raw.githubusercontent.com/serpcompany/social-proof/refs/heads/main/linkedin/avatars/adriaan-van-swieten.png'
+    },
+    {
+      testimonial:
+        'Fantastic agency to work with. Technical understanding of SEO sets apart from the rest. Extremely professional. Delivers fantastic service with results to match.',
+      personName: 'Alasdair Walker',
+      businessName: 'How to Drink Wine',
+      positionAtCompany: 'Director',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/alasdair-walker.png'
+    },
+    {
+      testimonial:
+        'Changing the game of SEO and digital marketing. Always on forefront of search engine changes. Pleasure to work with. Highly recommend for businesses needing more customers and online traffic.',
+      personName: 'Amine Bekkouch',
+      businessName: 'CAPREIT',
+      positionAtCompany: 'Operations Manager',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/amine-bekkouch.png'
+    },
+    {
+      testimonial:
+        "Killer SEO agency! Essential to work with team staying ahead of industry's changing landscape. Work with them and will make money. Highly recommend.",
+      personName: 'Ashley Usoh',
+      businessName: 'Alkem Health & Fitness',
+      positionAtCompany: 'Senior Marketing Manager',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/ashley-usoh.png'
+    },
+    {
+      testimonial:
+        'Few SEO experts would recommend. Gift for generating leads and sales online through ranking websites. Looking for someone to explode leads and sales online? This agency is your answer!',
+      personName: 'Aston Scott',
+      businessName: 'Source One International',
+      positionAtCompany: 'Partner And CMO',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/aston-scott.png'
+    },
+    {
+      testimonial:
+        "More than just 'SEO Specialists' - artists. Takes SEO and brings fresh holistic perspective. Always inventive. Cutting edge of search marketing industry. Skills notch above the rest.",
+      personName: 'Avram Gonzales',
+      businessName: 'Digital Harvest',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/avram-gonzales.png'
+    },
+    {
+      testimonial:
+        'Unique SEO skills get to top of Google rankings. Generated tons of business. Experts in getting leads on net. Delivers awesome results!',
+      personName: 'Bill Raup',
+      businessName: 'Bill Raup Search Engine Marketing',
+      positionAtCompany: 'President',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/bill-raup.png'
+    },
+    {
+      testimonial:
+        'True SEO industry leaders and experts at driving traffic. Collaborated on ranking campaigns. Saw numerous Page 1 and #1 rankings for competitive keywords in different industries. Highly recommend to anyone looking to incre...',
+      personName: 'Brendan Monahan',
+      businessName: 'Raleigh SEO Company',
+      positionAtCompany: 'CEO',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/brendan-monahan.png'
+    },
+    {
+      testimonial:
+        'Among very best in SEO industry. Highly regarded by clients for amazing results and by peers. Knowledge and insight invaluable.',
+      personName: "Brian O'Connell",
+      businessName: 'Restaurant Ordering Systems',
+      positionAtCompany: 'Owner',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/brian-oconnell.png'
+    },
+    {
+      testimonial:
+        'Team over-delivered. Consummate professionals. Hard to argue with results. All business KPIs up, traffic through the roof!',
+      personName: 'Caliph Herald',
+      businessName: 'Herald Square Marketing',
+      positionAtCompany: 'Principal Owner',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/caliph-herald.png'
+    },
+    {
+      testimonial:
+        'Well rounded Digital Marketing agency. Helped with several projects. Most knowledgeable SEO Experts. Always provided valuable insights into strategies that work.',
+      personName: 'Charlie Aligaen',
+      businessName: 'CoSprings SEO',
+      positionAtCompany: 'Internet Marketing Specialist',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/charlie-aligaen.png'
+    },
+    {
+      testimonial:
+        'Very knowledgeable when comes to SEO. Helped through tough situation. Highly recommend for business looking for more exposure online.',
+      personName: 'Chase Bailly',
+      businessName: 'Premier Web Development',
+      positionAtCompany: 'Chief Technology Officer',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/chase-bailly.png'
+    },
+    {
+      testimonial:
+        'Expert SEO consultancy. Information and strategies always cutting edge. Lead directly to positive rankings movement in campaigns.',
+      personName: 'Chris VanOosten',
+      businessName: 'CreatiVants',
+      positionAtCompany: 'SEO Expert',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/chris-vanoosten.png'
+    },
+    {
+      testimonial:
+        'Kindest and most professional agency. New clients see right away very detailed and hands on with search engine optimization. Results speak for themselves.',
+      personName: 'Christian Ontog',
+      businessName: 'Christian Ontog Media',
+      positionAtCompany: 'Search Engine Optimization Expert',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/christian-ontog.png'
+    },
+    {
+      testimonial:
+        'One of best resources in SEO. Knowledge of trends and ability to drive traffic amazing. Know their SEO. Glad to have on team!',
+      personName: 'Clayton Turner',
+      businessName: 'Leedly',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/clayton-turner.png'
+    },
+    {
+      testimonial:
+        'Best online marketers out there. Knowledge and creative drive to get results fantastic. Expertise beyond lot of SEO marketing experts. Pleasure to work with as fellow business associate.',
+      personName: 'Coel Wilson',
+      businessName: 'Framebridge',
+      positionAtCompany: 'VP, Press and Strategic Partnerships',
+      personAvatar: ''
+    },
+    {
+      testimonial:
+        'Immense pleasure working with for nearly two years. Absolutely blown away by leadership in SEO and Internet Marketing. What separates from rest is exceptional ability to take complex concepts and break down into something simple. Rare...',
+      personName: 'Daniel Pereira',
+      businessName: 'Monodelphous/Benam',
+      positionAtCompany: 'Fitting Power, Energy, and Management',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/daniel-pereira.png'
+    },
+    {
+      testimonial:
+        'Considering working with? Just know will be glad that you did. Excellent at SEO. Seen take poorly ranked website to front page of Google search page. Results show work with proven methods and strategies that help any business rank great.',
+      personName: 'Daryl Willman',
+      businessName: 'Infinite Management Consulting',
+      positionAtCompany: 'Business Technology Consultant',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/daryl-willman.png'
+    },
+    {
+      testimonial:
+        'Agency to go to if want to grow and expand business. Uses cutting edge SEO skills to drive more traffic and paying customers to website. Besides expertise in industry, also understands and anticipates needs of clients. Have best interests at heart and...',
+      personName: 'Dean Davis',
+      businessName: 'Lucid Dog SEO',
+      positionAtCompany: 'Founding Principal',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/dean-davis.png'
+    },
+    {
+      testimonial:
+        'When comes to SEO, true talent. Extremely knowledgeable in field and has team to get job done better than anyone else. Demonstrates great combination of skills and commitment, delivering extraordinary results. Strives to constantly improve SEO practices and strategies...',
+      personName: 'Donna Wright',
+      businessName: 'Benson Radiology',
+      positionAtCompany: 'Talent & Diversity Manager',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/donna-wright.png'
+    },
+    {
+      testimonial:
+        'SEO EXPERTS. Knowledge, not just of SEO, but of marketing and business growth amazing. Down to earth and always commensurate professional, will be asset to any business in need of better web presence and desired traffic. Ability to take business and reengineer marketing...',
+      personName: 'Drew Sohn',
+      businessName: 'Digital Traffic Solutions',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/drew-sohn.png'
+    },
+    {
+      testimonial:
+        'Recently completed extensive SEO project involving three massive e-commerce sites for client. One website in desperate need of aggressive linking strategy to out-rank huge competitor. With smart approach, secured site in top position within anticipated timeframe...',
+      personName: 'Garrett Suzak',
+      businessName: 'Transportation Industry',
+      positionAtCompany: 'Auto Enthusiast & Hobbyist',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/garrett-suzak.png'
+    },
+    {
+      testimonial:
+        'Reached out for help and advice with difficult customer. Depth of knowledge and passion produced nothing short of phenomenal. Pleasure to work with.',
+      personName: 'Gary Donn',
+      businessName: 'Gary Donn Internet Solutions',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/gary-donn.png'
+    },
+    {
+      testimonial:
+        'Among most knowledgeable professionals in SEO world. Pleasure to work with. Working together achieved high rankings for clients able to over-deliver in short amount of time.',
+      personName: 'Gary Wilson',
+      businessName: 'Let Property',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/gary-wilson.png'
+    },
+    {
+      testimonial:
+        'Done amazing job with SEO for business. Already hit first page of google. Wondering how to handle all phone calls!! Thanks again certainly get referrals!!!',
+      personName: 'Gretchen January',
+      businessName: 'RED MARKETING CHICK',
+      positionAtCompany: 'Owner',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/gretchen-january.png'
+    },
+    {
+      testimonial:
+        "Such professionals and masters of craft. Incredible search marketers. Marketing strategy proven to get results and rank in top SERP listings. Need more traffic, leads, and revenue coming into business site? Don't hesitate contacting SEO Firepower team.",
+      personName: 'Howard Soza',
+      businessName: 'MIA SEO',
+      positionAtCompany: 'Founder',
+      personAvatar: ''
+    },
+    {
+      testimonial:
+        'Top minds in SEO - always innovating, always cutting edge. Always great to work with and look forward to collaborating again in future.',
+      personName: 'Irene Tay',
+      businessName: 'Sydney Maestro',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/irene-tay.png'
+    },
+    {
+      testimonial:
+        'Among elite when comes to SEO and digital marketing. After working together, taken rankings for multiple campaigns to next level. Seeing increases in traffic, more customers, and bigger ROIs. Highly recommend!',
+      personName: 'Jamie Buck',
+      businessName: 'BizGrow',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jamie-buck.png'
+    },
+    {
+      testimonial:
+        "Ridiculously Efficient phrase comes to mind. Systematic, highly effective approach to SEO gives option to pick and choose which clients work with. Don't hold back, give all information asked for, and as rise to top of search results...",
+      personName: 'Jamie R. Morris',
+      businessName: 'Brent Coon & Associates',
+      positionAtCompany: 'Marketing Director',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jamie-r-morris.png'
+    },
+    {
+      testimonial:
+        'SEO industry leaders and online marketing experts. Always up to date with most actionable strategies that prove time and time again to get excellent results. Highly recommend working with to anyone looking to drive more traffic to website.',
+      personName: 'Jarrod Wayman',
+      businessName: 'Activ8 SEO',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jarrod-wayman.png'
+    },
+    {
+      testimonial:
+        'Always comes up with awesome ideas. Expertise in Search Engine Optimization really amazing. Can move website from out of nowhere to page one of Google. Highly recommend if looking for SEO Experts.',
+      personName: 'Jeffrey Delos Santos',
+      businessName: 'Jed Matthew Search Engine Marketing',
+      positionAtCompany: 'CEO',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jeffrey-delos-santos.png'
+    },
+    {
+      testimonial:
+        'Working with has been absolute pleasure! Able to partner on couple of projects and always brings A-game to table. Knows and understands intricacies of SEO and how to use for absolute best results. Any company with opportunity to work with should...',
+      personName: 'Jeremie Carroll',
+      businessName: 'Optum',
+      positionAtCompany: 'Product Manager',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jeremie-carroll.png'
+    },
+    {
+      testimonial:
+        'Best SEO agency met. After working with on business, been able to get more traffic coming into website, expand, and grow customer base. Definitely recommend if looking towards growing business.',
+      personName: 'Jeromie Rosa',
+      businessName: 'Boosted Maps SEO',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jeromie-rosa.png'
+    },
+    {
+      testimonial:
+        'Most knowledgeable SEOs and digital marketers around. Not only extremely professional, but work top quality and see great return from working with. Seriously, take business somewhere else, truly missing out on great team who always gets job done.',
+      personName: 'Joel House',
+      businessName: 'Expand Digital',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/joel-house.png'
+    },
+    {
+      testimonial:
+        'Great agency, and knows their stuff! One of those teams just brilliant to work with. Looking for experts in SEO? This is your answer. Stays up to date in online trends, and shows in work. Highly recommend!',
+      personName: 'Joevren Curmi',
+      businessName: 'OneTwenty',
+      positionAtCompany: 'SEO Specialist',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/joevren-curmi.png'
+    },
+    {
+      testimonial:
+        'Extraordinary SEO consultancy, and firm SEO Firepower miles above rest when comes to delivering results. Dramatically increased traffic on number of campaigns collaborated on and key asset in major project. Highly recommend working with.',
+      personName: 'John Iemolo',
+      businessName: 'General Motors',
+      positionAtCompany: 'Sales Professional',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/john-iemolo.png'
+    },
+    {
+      testimonial:
+        "Ability to rank any business's website on first page of Google elite compared to global competition. Proven professionals in field and will successfully generate more paying customers for any business!",
+      personName: 'Jonathan Coco',
+      businessName: 'Coco Bros. Digital Marketing',
+      positionAtCompany: 'Globally Renowned Search Engine Specialist',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jonathan-coco.png'
+    },
+    {
+      testimonial:
+        'Talents with SEO and getting businesses more visitors beyond epic. Consider savants with ranking websites on Google. Depth reached with competition analysis and being able to explain to clients in such simplistic way amazing. Save yourself time and contact immediately...',
+      personName: 'Jonathan Strong',
+      businessName: 'Big League Consulting',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jonathan-strong.png'
+    },
+    {
+      testimonial:
+        'Tired of empty promises for first page rankings. Found this agency and everything changed. Provided clear analysis and effective plan.',
+      personName: 'Jt Clough',
+      businessName: 'K9 Coach',
+      positionAtCompany: 'Dog Training Business Coach',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jt-clough.png'
+    },
+    {
+      testimonial:
+        'Invaluable asset to work with. Campaigns always successful. Team delivers top ranking results consistently.',
+      personName: 'Keith Best',
+      businessName: 'Best Business Development',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/keith-best.png'
+    },
+    {
+      testimonial:
+        'Best way to grow business. Places you in front of thousands already looking for your services. Empowers market impact beyond expectations.',
+      personName: 'Lawrence Rouse',
+      businessName: 'Vesperance',
+      positionAtCompany: 'Chief Executive Officer',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/lawrence-rouse.png'
+    },
+    {
+      testimonial:
+        'Met or exceeded all expectations. Excellent ongoing efforts in website development, marketing and optimization. Delivers on timelines.',
+      personName: 'Leonard Morley',
+      businessName: 'Mind Genomics Advisors',
+      positionAtCompany: 'Senior Implementation Manager',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/leonard-morley.png'
+    },
+    {
+      testimonial:
+        'Knowledgeable SEO team. Spot-on solutions for page ranking problems. Recommend for all SEO needs.',
+      personName: 'Lesley Jones',
+      businessName: 'Right Move Media',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/lesley-jones.png'
+    },
+    {
+      testimonial:
+        "Feel confident they'll properly handle all SEO requirements.",
+      personName: 'Marcel A. Gruber',
+      businessName: 'Once North',
+      positionAtCompany: 'Practice Architect',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/marcel-a-gruber.png'
+    },
+    {
+      testimonial:
+        'Top notch digital marketing consulting. Want SEO done right the first time? This is the team to contact.',
+      personName: 'Mark Downing',
+      businessName: 'Cart.com',
+      positionAtCompany: 'Senior Project Manager',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/mark-downing.png'
+    },
+    {
+      testimonial:
+        'Website in excellent hands. Impressive knowledge translates to page one rankings. Caring team that delivers results.',
+      personName: 'Megan Lee',
+      businessName: 'M Lee Web',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/megan-lee.png'
+    },
+    {
+      testimonial:
+        'Looking to increase clicks and revenue? Expertise in SEO delivers real outcomes. Strongly recommend for dominating Google search results.',
+      personName: 'Michael Baugh',
+      businessName: 'Grand Rapids SEO',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/michael-baugh.png'
+    },
+    {
+      testimonial:
+        'Search engine optimization experts. Know exactly what search engines want to see. While most SEOs make empty claims, this agency brought page 1 results.',
+      personName: 'Michael Lollis',
+      businessName: 'Code Blue SEO',
+      positionAtCompany: 'Owner',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/michael-lollis.png'
+    },
+    {
+      testimonial:
+        'Know their stuff in digital marketing. Took web presence from minimal to huge streams of new viewers. Highly recommend their service.',
+      personName: 'Mitchell Gaskey',
+      businessName: 'Mynd Property Management',
+      positionAtCompany: 'Project Manager',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/mitchell-gaskey.png'
+    },
+    {
+      testimonial:
+        'Knowledge of search engine optimization astounding. Put businesses in front of potential customers on Google. Increase traffic and online exposure.',
+      personName: 'Nicholas Man',
+      businessName: 'Counseling & Therapy SEO',
+      positionAtCompany: 'President',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/nicholas-man.png'
+    },
+    {
+      testimonial:
+        'Great search engine optimization experts. Top of their game in increasing web visibility. Would surely hire for any business!',
+      personName: 'Nicolas Roy',
+      businessName: 'Roy SEO',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/nicolas-roy.png'
+    },
+    {
+      testimonial:
+        'Extremely knowledgeable in SEO. Trained with best online marketing gurus. Highly recommend for businesses needing more online exposure.',
+      personName: 'Nigel Rankin',
+      businessName: 'SkyBox Labs',
+      positionAtCompany: 'Technical Director',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/nigel-rankin.png'
+    },
+    {
+      testimonial:
+        'Experts at search engine marketing. Highly knowledgeable team. Want dominating online presence? Should be #1 choice. Highly recommended!',
+      personName: 'Paul Atkin',
+      businessName: 'Paul Atkin',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/paul-atkin.png'
+    },
+    {
+      testimonial:
+        'Wizards with specialized SEO skills for local companies. Consummate professionals with passion for every project. The team to help understand SEO benefits.',
+      personName: 'Paula Chess',
+      businessName: 'Online Marketing Solutions',
+      positionAtCompany: 'Owner',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/paula-chess.png'
+    },
+    {
+      testimonial:
+        'Thanks to SEO Firepower for sharing knowledge and strategies. After implementing their tips, campaigns already seeing great improvements.',
+      personName: 'Peter Hawkens',
+      businessName: 'priority 1 homes Inc.',
+      positionAtCompany: 'Co-Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/peter-hawkens.png'
+    },
+    {
+      testimonial:
+        'True innovators in their field. Brought endless revenue and customers to every client. What separates the elite is ability to adapt.',
+      personName: 'Rashad "Chirag" Sharma',
+      businessName: 'Tenacious Growth',
+      positionAtCompany: 'President',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/rashad-chirag-sharma.png'
+    },
+    {
+      testimonial:
+        'Industry leaders in SEO and internet media. Active in top marketing organizations. Sought after for expertise. Pleasure working with this company.',
+      personName: 'Richard Paul Rowe',
+      businessName: 'Om Online Media Agency',
+      positionAtCompany: 'FinTech Consultant',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/richard-paul-rowe.png'
+    },
+    {
+      testimonial:
+        'Absolute pleasure working with. Extremely knowledgeable in internet marketing and SEO. Secured #1 rankings for main keywords. Made all the difference.',
+      personName: 'Richard Soseman',
+      businessName: 'Convergent SEO',
+      positionAtCompany: 'Owner',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/richard-soseman.png'
+    },
+    {
+      testimonial:
+        'Geniuses in SEO. With algorithms constantly changing, have commitment to stay ahead through learning and adapting. Irreplaceable asset delivering results.',
+      personName: 'Ryan Ciran',
+      businessName: 'Schaumburg SEO',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/ryan-ciran.png'
+    },
+    {
+      testimonial:
+        'Fantastic Search Engine Marketers. Took business to next level, ranking website in short time. Great opportunity to work with them.',
+      personName: 'Sage Mauk',
+      businessName: 'Sage Mauk Consulting',
+      positionAtCompany: 'Growth Consultant',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/sage-mauk.png'
+    },
+    {
+      testimonial:
+        'Best SEO agency met. Multiple successful projects. Impressive ability to affect revenue and traffic. Incredible knowledge depth. Delivers as promised.',
+      personName: 'Scottie Schneider',
+      businessName: 'Business Breakthrough Advisors',
+      positionAtCompany: 'Sales',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/scottie-schneider.png'
+    },
+    {
+      testimonial:
+        'SEO geniuses with extensive field experience. Great working relationship. Creative touch in everything they do. 100% recommend for next-level business.',
+      personName: 'Sebastian Beja',
+      businessName: 'ELEVATE Group',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/sebastian-beja.png'
+    },
+    {
+      testimonial:
+        'Met at Digital Marketing Conference. Clearly experts in search engine optimization. Recently worked together with excellent results.',
+      personName: 'Sergio Chavez',
+      businessName: 'SEO Inc',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/sergio-chavez.png'
+    },
+    {
+      testimonial:
+        'Clear, concise and results oriented. For sustainable results, put #1 on list of SEO experts. Accelerated growth in every area of SEO.',
+      personName: 'Shane Perry',
+      businessName: 'Digital Reach',
+      positionAtCompany: 'Owner',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/shane-perry.png'
+    },
+    {
+      testimonial:
+        'True professionals who understand ranking on first page of Google. Expertise makes it happen. Top-notch SEO experts for serious business growth.',
+      personName: 'Shirley Price',
+      businessName: 'Inner City SEO',
+      positionAtCompany: 'Owner',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/shirley-price.png'
+    },
+    {
+      testimonial:
+        'True SEO pioneers. Provide actionable strategies and spot-on ranking advice. Agency easy to work with and gets the job done.',
+      personName: 'Steve Jablecki',
+      businessName: 'Complete Visibility',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/steve-jablecki.png'
+    },
+    {
+      testimonial:
+        'Pleasure to do business with. Knowledgeable in search engine marketing and website ranking. Recommend for ranking in major search engines.',
+      personName: 'Tatiana Proctor',
+      businessName: 'TatianaDesigns',
+      positionAtCompany: 'President',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/tatiana-proctor.png'
+    },
+    {
+      testimonial:
+        'Hands-down one of BEST choices for traffic and internet marketing expertise. Knowledge and reliability truly high-level. Trusted advisors in industry.',
+      personName: 'Terra Andersen',
+      businessName: 'Red Card Growth',
+      positionAtCompany: 'Chief Marketing Officer | Advisor',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/terra-andersen.png'
+    },
+    {
+      testimonial:
+        'Cannot say enough about their professionalism. Over-delivered on every promise. Initially hesitant about outsourcing, but they quickly earned trust.',
+      personName: 'Timothy J. Vega',
+      businessName: 'sirTimithius Consulting',
+      positionAtCompany: 'CEO and Marketing Director',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/timothy-j-vega.png'
+    },
+    {
+      testimonial:
+        'Worked with on numerous marketing campaigns with great success. SEO expertise second to none. Ranking highly for all search terms. Customers find us easily.',
+      personName: 'Tom Gustar',
+      businessName: 'Green Genie SEO',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/tom-gustar.png'
+    },
+    {
+      testimonial:
+        'Amazing understanding of SEO, structured data and schema markup for website rankings. Among best in industry. Helped numerous campaign rankings.',
+      personName: 'Traci Gurney',
+      businessName: 'Traci Gurney',
+      positionAtCompany: 'Marketing Specialist',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/traci-gurney.png'
+    },
+    {
+      testimonial:
+        'On cutting edge of SEO industry. Never disappointed on any collaborative campaign. Committed to business expansion? Highly recommend connecting.',
+      personName: 'Troy Varnado III',
+      businessName: 'Varnado Web Solutions',
+      positionAtCompany: 'Digital Marketing Specialist',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/troy-varnado-iii.png'
+    },
+    {
+      testimonial:
+        'Working with on Local SEO was a learning experience. Outstanding knowledge in Google ranking factors, citations, social media. Great team players.',
+      personName: 'Victor Ursan',
+      businessName: 'Potter Roemer Fire Pro',
+      positionAtCompany: 'SEO Consultant',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/victor-ursan.png'
+    },
+    {
+      testimonial:
+        'Collaborating was pleasurable, professional experience. Always on top of tasks. Creative problem solvers. True SEO experts at top of their game.',
+      personName: 'Vu Tran',
+      businessName: 'Climb SEO',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/vu-tran.png'
+    },
+    {
+      testimonial:
+        'Remarkable marketing strategists and social media experts. Among top in world. Necessity to have on side if want to be #1 in industry online.',
+      personName: 'Wyatt Mills',
+      businessName: 'Niche Driven Leads',
+      positionAtCompany: 'Business Development Manager',
+      personAvatar: ''
+    },
+    {
+      testimonial:
+        'Showed amazing results through discipline and smart work. SEO and marketing speak for themselves. Stay on cutting edge of internet marketing. Fully recommend.',
+      personName: 'Zack Greenfield',
+      businessName: 'The Zack Greenfield Company',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/zack-greenfield.png'
+    },
+    {
+      testimonial:
+        "Devin has done a great job helping me improve the organic traffic to my chess website! By following his advice, I've gone from almost no organic traffic, to more than 10,000 visitors per month from google searches in little more than a year.",
+      personName: 'Blake Baumgartner',
+      businessName: 'Chess Pathways',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/blake-baumgartner.png'
+    },
+    {
+      testimonial:
+        'Devin is one of the most integritous people I have ever had the pleasure of doing business with. He is incredibly studied and knowledgeable, his ability to create and implement systems and processes for business growth is unparalleled. I highly recommend him and his businesses.',
+      personName: 'Jeremy Brasher',
+      businessName: 'BlendMode',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/jeremy-brasher.png'
+    },
+    {
+      testimonial:
+        "Devin is an amazing entrepreneur. Love the content he puts out, and the courses in SERP University as well. Everything he touches is pure gold. Super helpful and he's also a great human being.",
+      personName: 'Joel Kaplan',
+      businessName: 'Agency Lab',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/joel-kaplan.png'
+    },
+    {
+      testimonial:
+        'Devin is a rockstar at what he does, plain and simple–best-in-class processes and a work ethic to match.',
+      personName: 'Alex Moskov',
+      businessName: 'CoinCentral',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/alex-moskov.png'
+    },
+    {
+      testimonial:
+        'The real deal. They actually are transparent about the SEO strategies & link building process and back it up with fantastic reporting. Recommended!',
+      personName: 'Maxwell Hertan',
+      businessName: 'Megaphone Marketing',
+      positionAtCompany: 'Founder',
+      personAvatar:
+        'https://raw.githubusercontent.com/devinschumacher/social-proof/refs/heads/main/avatars/maxwell-hertan.png'
+    }
+  ];
 
-useSeoMeta({
-  title: page.value.seo?.title || page.value.title,
-  ogTitle: page.value.seo?.title || page.value.title,
-  description: page.value.seo?.description || page.value.description,
-  ogDescription: page.value.seo?.description || page.value.description
-})
+  const testimonialVideoData = [
+    {
+      personName: 'Anne Peterson',
+      businessName: 'Anne Peterson',
+      businessWebsite: 'https://fullmoonrisingfarm.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'LeAIQzMG6uc'
+    },
+    {
+      personName: 'Dr. Emanuela Corielli',
+      businessName: 'Bright Healthy Smiles',
+      businessWebsite: 'https://brighthealthysmiles.com/',
+      positionAtCompany: 'Owner',
+      videoId: 'rr-BoZzJ-3g'
+    },
+    {
+      personName: 'Dr. Jamie Osorio',
+      businessName: 'Buckner Family Dental',
+      businessWebsite: 'https://bucknerfamilydental.com/',
+      positionAtCompany: 'Owner',
+      videoId: '9gpg2qyfQUs'
+    },
+    {
+      personName: 'Jeremy Castro',
+      businessName: 'Castro Law Offices',
+      businessWebsite: 'https://castrolawoffices.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'ZFlLyNBravs'
+    },
+    {
+      personName: 'Blake Baumgartner',
+      businessName: 'Chess Pathways',
+      businessWebsite: 'https://chesspathways.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'aoYoUjFq-js'
+    },
+    {
+      personName: 'Ashley Mendoza',
+      businessName: 'D20 Dental',
+      businessWebsite: 'https://d2odental.com/',
+      positionAtCompany: 'Office Manager',
+      videoId: 'T2egF07iegE'
+    },
+    {
+      personName: 'Dr. Joanna Hong',
+      businessName: 'Pristine Dental',
+      businessWebsite: 'https://www.pristinedentalnyc.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'PEHezJYg6GM'
+    },
+    {
+      personName: 'Dr. Edward Liu',
+      businessName: 'Edward Liu General & Implant Dentistry',
+      businessWebsite: 'https://www.dredwardliu.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'W7HroN7LOwA'
+    },
+    {
+      personName: 'Chris Lynch',
+      businessName: 'Everyday California',
+      businessWebsite: 'https://www.everydaycalifornia.com/',
+      positionAtCompany: 'Co-Founder',
+      videoId: 'ocDVXUo3AqE'
+    },
+    {
+      personName: 'Gary Wilson',
+      businessName: 'Get Me Links',
+      businessWebsite: 'https://getmelinks.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'L1pVYSMTgxw'
+    },
+    {
+      personName: 'Dr. Andy Chang',
+      businessName: 'iCare Dental',
+      businessWebsite: 'https://www.icarefamilydentistry.com/',
+      positionAtCompany: 'Dentist',
+      videoId: 'PWIMSUGTBqY'
+    },
+    {
+      personName: 'Chase Hanson',
+      businessName: 'iCryo',
+      businessWebsite: 'https://icryo.com/',
+      positionAtCompany: 'Executive Vice President',
+      videoId: 'ybP56-5Trfg'
+    },
+    {
+      personName: 'Jenny Chen',
+      businessName: 'Jenny Chen Pediatric And Family Dentistry',
+      businessWebsite: 'https://www.smilesinpa.com/',
+      positionAtCompany: 'Founder',
+      videoId: 's27eEwQmx8I'
+    },
+    {
+      personName: 'Jenna Hebert',
+      businessName: 'Marsh Family Dental',
+      businessWebsite: 'https://marshfamilydental.com/',
+      positionAtCompany: 'Owner',
+      videoId: 'pRCFsXYHigA'
+    },
+    {
+      personName: 'Brad Campbell',
+      businessName: 'Riot Glass',
+      businessWebsite: 'https://www.riotglass.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'njsTGxp5S6A'
+    },
+    {
+      personName: 'Paul Conant',
+      businessName: 'Smile Esthetics',
+      businessWebsite: 'https://smileesthetics.com/',
+      positionAtCompany: 'Co-Founder',
+      videoId: 'Ia-ZxtZQxXg'
+    },
+    {
+      personName: 'Dr. Mariana Conant',
+      businessName: 'Smile Esthetics',
+      businessWebsite: 'https://smileesthetics.com/',
+      positionAtCompany: 'Co-Founder',
+      videoId: 'cb7aOYs1IOE'
+    },
+    {
+      personName: 'Beau Schmitt',
+      businessName: 'Sunday Scaries',
+      businessWebsite: 'https://sundayscaries.com/',
+      positionAtCompany: 'Co-Founder',
+      videoId: 'CNQ14FsM49k'
+    },
+    {
+      personName: 'Adam Weiler',
+      businessName: 'Sunken Stone',
+      businessWebsite: 'https://emplicit.co/',
+      positionAtCompany: 'Founder',
+      videoId: '7u20tv5G6D8'
+    },
+    {
+      personName: 'Dr. Riccardo Carrillo',
+      businessName: 'The Smile Home',
+      businessWebsite: 'https://www.thesmilehomefl.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'iOmQpwCJBSg'
+    },
+    {
+      personName: 'Lisa Baronoff',
+      businessName: 'Walkee Paws',
+      businessWebsite: 'https://walkeepaws.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'KaTGLZ84bqQ'
+    },
+    {
+      personName: 'Aden Hochstetler',
+      businessName: 'True Nature Roofing',
+      businessWebsite: 'http://www.truenatureroofing.com/',
+      positionAtCompany: 'Founder',
+      videoId: 'xQhPYAUAYm8'
+    },
+    {
+      personName: 'Dr. Elena Shabani',
+      businessName: 'Shabani Dental',
+      businessWebsite: 'https://www.shabanidental.com/',
+      positionAtCompany: 'Owner',
+      videoId: 'i2bS_MxikMs'
+    },
+    {
+      personName: 'Tiffany McEwen',
+      businessName: 'Almeida & Bell Dental',
+      businessWebsite: 'https://www.almeidabelldental.com/',
+      positionAtCompany: 'Office Manager',
+      videoId: '1gt0U4PHs4Y'
+    }
+  ];
 </script>
 
 <template>
-  <div
-    v-if="page"
-    class="relative"
-  >
-    <div class="hidden lg:block">
-      <UColorModeImage
-        light="/images/light/line-1.svg"
-        dark="/images/dark/line-1.svg"
-        class="absolute pointer-events-none pb-10 left-0 top-0 object-cover h-[650px]"
-      />
-    </div>
-
+  <UMain>
     <UPageHero
-      :description="page.description"
-      :links="page.hero.links"
-      :ui="{ container: 'md:pt-18 lg:pt-20' }"
-    >
-      <template #title>
-        <MDC
-          :value="page.title"
-          class="*:leading-11 sm:*:leading-19 max-w-3xl mx-auto"
-        />
-      </template>
-    </UPageHero>
+      title="SERP Solutions"
+      description="Growth & Automation solutions that help brands succeed online."
+      orientation="vertical"
+    />
 
-    <UPageSection
-      :description="page.section.description"
-      :features="page.section.features"
-      orientation="horizontal"
-      :ui="{
-        container: 'lg:px-0 2xl:px-20 mx-0 max-w-none md:mr-10',
-        features: 'gap-0'
-      }"
-      reverse
-    >
-      <template #title>
-        <MDC
-          :value="page.section.title"
-          class="sm:*:leading-11"
-        />
-      </template>
-      <img
-        :src="page.section.images.desktop"
-        :alt="page.section.title"
-        class="hidden lg:block 2xl:hidden left-0 w-full max-w-2xl"
-      >
-      <img
-        :src="page.section.images.mobile"
-        :alt="page.section.title"
-        class="block lg:hidden 2xl:block 2xl:w-full 2xl:max-w-2xl"
-      >
-    </UPageSection>
+    <TestimonialVideoGrid :videos="testimonialVideoData" />
 
-    <USeparator :ui="{ border: 'border-primary/30' }" />
-
-    <UPageSection
-      id="features"
-      :description="page.features.description"
-      :features="page.features.features"
-      :ui="{
-        title: 'text-left @container relative flex',
-        description: 'text-left'
-      }"
-      class="relative overflow-hidden"
-    >
-      <div class="absolute rounded-full -left-10 top-10 size-[300px] z-10 bg-primary opacity-30 blur-[200px]" />
-      <div class="absolute rounded-full -right-10 -bottom-10 size-[300px] z-10 bg-primary opacity-30 blur-[200px]" />
-      <template #title>
-        <MDC
-          :value="page.features.title"
-          class="*:leading-9"
-        />
-        <div class="hidden @min-[1020px]:block">
-          <UColorModeImage
-            light="/images/light/line-2.svg"
-            dark="/images/dark/line-2.svg"
-            class="absolute top-0 right-0 size-full transform scale-95 translate-x-[70%]"
-          />
-        </div>
-      </template>
-    </UPageSection>
-
-    <USeparator :ui="{ border: 'border-primary/30' }" />
-
-    <UPageSection
-      id="steps"
-      :description="page.steps.description"
-      class="relative overflow-hidden"
-    >
-      <template #headline>
-        <UColorModeImage
-          light="/images/light/line-3.svg"
-          dark="/images/dark/line-3.svg"
-          class="absolute -top-10 sm:top-0 right-1/2 h-24"
-        />
-      </template>
-      <template #title>
-        <MDC :value="page.steps.title" />
-      </template>
-
-      <template #features>
-        <UPageCard
-          v-for="(step, index) in page.steps.items"
+    <UPageSection>
+      <UPageColumns>
+        <LazyUPageCard
+          v-for="(testimonial, index) in testimonials"
           :key="index"
-          class="group"
-          :ui="{ container: 'p-4 sm:p-4', title: 'flex items-center gap-1' }"
+          variant="subtle"
         >
-          <UColorModeImage
-            v-if="step.image"
-            :light="step.image?.light"
-            :dark="step.image?.dark"
-            :alt="step.title"
-            class="size-full"
-          />
+          <template #default>
+            <div class="flex flex-col">
+              <!-- Testimonial header with avatar and user info -->
+              <div class="mb-4">
+                <!-- On mobile: Stack everything -->
+                <div class="flex flex-col lg:hidden">
+                  <UAvatar
+                    :name="testimonial.personName"
+                    :src="testimonial.personAvatar || undefined"
+                    :alt="testimonial.personName"
+                    class="mb-2 h-12 w-12"
+                  />
+                  <div>
+                    <p class="font-medium">{{ testimonial.personName }}</p>
+                    <p
+                      class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      {{ testimonial.businessName }}
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      {{ testimonial.positionAtCompany }}
+                    </p>
+                  </div>
+                </div>
 
-          <div class="flex flex-col gap-2">
-            <span class="text-lg font-semibold">
-              {{ step.title }}
-            </span>
-            <span class="text-sm text-muted">
-              {{ step.description }}
-            </span>
-          </div>
-        </UPageCard>
-      </template>
+                <!-- On large screens: Avatar | Name with business and position stacked under name -->
+                <div class="hidden lg:flex">
+                  <UAvatar
+                    :name="testimonial.personName"
+                    :src="testimonial.personAvatar || undefined"
+                    :alt="testimonial.personName"
+                    class="mr-4 h-12 w-12"
+                  />
+                  <div>
+                    <p class="font-medium">{{ testimonial.personName }}</p>
+                    <p
+                      class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                    >
+                      {{ testimonial.businessName }}
+                    </p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      {{ testimonial.positionAtCompany }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Testimonial text -->
+              <p
+                class="mt-2 text-sm before:content-[open-quote] after:content-[close-quote]"
+              >
+                {{ testimonial.testimonial }}
+              </p>
+            </div>
+          </template>
+        </LazyUPageCard>
+      </UPageColumns>
     </UPageSection>
-
-    <UPageSection
-      id="pricing"
-      class="mb-32 overflow-hidden"
-      :title="page.pricing.title"
-      :description="page.pricing.description"
-      :plans="page.pricing.plans"
-      :ui="{ title: 'text-left @container relative', description: 'text-left' }"
-    >
-      <template #title>
-        <MDC :value="page.pricing.title" />
-
-        <div class="hidden @min-[1120px]:block">
-          <UColorModeImage
-            light="/images/light/line-4.svg"
-            dark="/images/dark/line-4.svg"
-            class="absolute top-0 right-0 size-full transform translate-x-[60%]"
-          />
-        </div>
-      </template>
-
-      <UPricingPlans scale>
-        <UPricingPlan
-          v-for="(plan, index) in page.pricing.plans"
-          :key="index"
-          :title="plan.title"
-          :description="plan.description"
-          :price="plan.price"
-          :billing-period="plan.billing_period"
-          :billing-cycle="plan.billing_cycle"
-          :highlight="plan.highlight"
-          :scale="plan.highlight"
-          variant="soft"
-          :features="plan.features"
-          :button="plan.button"
-        />
-      </UPricingPlans>
-    </UPageSection>
-
-    <UPageSection
-      id="testimonials"
-      :title="page.testimonials.title"
-      :description="page.testimonials.description"
-      :items="page.testimonials.items"
-    >
-      <template #headline>
-        <UColorModeImage
-          light="/images/light/line-5.svg"
-          dark="/images/dark/line-5.svg"
-          class="absolute -top-10 sm:top-0 right-1/2 h-24"
-        />
-      </template>
-      <template #title>
-        <MDC :value="page.testimonials.title" />
-      </template>
-
-      <UContainer>
-        <UPageColumns class="xl:columns-3">
-          <UPageCard
-            v-for="(testimonial, index) in page.testimonials.items"
-            :key="index"
-            variant="subtle"
-            :description="testimonial.quote"
-            :ui="{ description: 'before:content-[open-quote] after:content-[close-quote]' }"
-          >
-            <template #footer>
-              <UUser
-                v-bind="testimonial.user"
-                size="xl"
-              />
-            </template>
-          </UPageCard>
-        </UPageColumns>
-      </UContainer>
-    </UPageSection>
-
-    <USeparator />
-
-    <UPageCTA
-      v-bind="page.cta"
-      variant="naked"
-      class="overflow-hidden @container"
-    >
-      <template #title>
-        <MDC :value="page.cta.title" />
-
-        <div class="@max-[1280px]:hidden">
-          <UColorModeImage
-            light="/images/light/line-6.svg"
-            dark="/images/dark/line-6.svg"
-            class="absolute left-10 -top-10 sm:top-0 h-full"
-          />
-          <UColorModeImage
-            light="/images/light/line-7.svg"
-            dark="/images/dark/line-7.svg"
-            class="absolute right-0 bottom-0 h-full"
-          />
-        </div>
-      </template>
-
-      <div class="absolute rounded-full dark:bg-primary blur-[250px] size-40 sm:size-50 transform -translate-x-1/2 left-1/2 -translate-y-80" />
-
-      <LazyStarsBg />
-    </UPageCTA>
-  </div>
+  </UMain>
 </template>

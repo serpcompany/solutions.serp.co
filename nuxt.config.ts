@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/ui-pro',
     '@nuxt/content'
   ],
-
   devtools: {
     enabled: true
   },
