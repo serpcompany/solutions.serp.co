@@ -45,7 +45,7 @@
 
       <UButton label="Get Started" variant="subtle" class="hidden lg:block" />
 
-      <!-- <UColorModeButton /> -->
+      <UColorModeButton />
     </template>
 
     <template #body>
