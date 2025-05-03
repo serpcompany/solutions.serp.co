@@ -910,7 +910,7 @@
   <UMain>
     <UPageHero
       title="SERP Solutions"
-      description="Growth & Automation solutions that help brands succeed online."
+      description="Growth & automation solutions that help brands succeed online."
       orientation="vertical"
     />
 
