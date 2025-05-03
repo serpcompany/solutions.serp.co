@@ -43,7 +43,7 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
       />
 
       <UButton
-        label="Download App"
+        label="Get Started"
         variant="subtle"
         class="hidden lg:block"
       />
@@ -59,7 +59,8 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
       />
       <UButton
         class="mt-4"
-        label="Download App"
+        label="Get Started"
+
         variant="subtle"
         block
       />

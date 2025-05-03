@@ -3,32 +3,30 @@
     v-slot="{ open }"
     :modal="false"
     :items="[{
-      label: 'Starter',
-      to: 'https://ui-pro-starter.nuxt.dev/'
-    }, {
-      label: 'Landing',
-      to: 'https://landing-template.nuxt.dev/',
-      color: 'primary',
+      label: 'Solutions',
+  to: '/solutions/',
+  color: 'primary',
       checked: true,
       type: 'checkbox'
     }, {
-      label: 'Docs',
-      to: 'https://docs-template.nuxt.dev/'
+      label: 'Growth',
+      to: '/growth/',
+
     }, {
-      label: 'SaaS',
-      to: 'https://saas-template.nuxt.dev/'
+      label: 'Automation',
+      to: '/automation/',
     }, {
-      label: 'Dashboard',
-      to: 'https://dashboard-template.nuxt.dev/'
+      label: 'SEO',
+      to: '/seo/'
     }, {
-      label: 'Chat',
-      to: 'https://chat-template.nuxt.dev/'
+      label: 'AI Agents',
+      to: '/ai-agents/'
     }]"
     :ui="{ content: 'w-(--reka-dropdown-menu-trigger-width) min-w-0' }"
     size="xs"
   >
     <UButton
-      label="Landing"
+      label="Solutions"
       variant="subtle"
       trailing-icon="i-lucide-chevron-down"
       size="xs"
