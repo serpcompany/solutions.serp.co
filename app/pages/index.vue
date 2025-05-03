@@ -898,6 +898,12 @@
       videoId: '1gt0U4PHs4Y'
     }
   ];
+  const isLoaded = ref(false);
+  const isPlaying = ref(false);
+  const video = ref();
+  function stateChange(event: { data: number }) {
+    isPlaying.value = event.data === 1;
+  }
 </script>
 
 <template>
