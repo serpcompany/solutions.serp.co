@@ -25,7 +25,6 @@ import tsParser from '@typescript-eslint/parser';
  * @returns {Array} ESLint flat config array
  */
 export function createConfig({
-  quiet = false,
   additionalRules = {},
   additionalIgnores = [],
   baseDirectory = path.dirname(fileURLToPath(import.meta.url))
