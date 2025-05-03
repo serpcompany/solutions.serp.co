@@ -9,8 +9,17 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' eslint . --fix",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+     "prepare": "husky install"
   },
+  "lint-staged": {
+  "*.{js,ts,vue}": [
+    "eslint --fix"
+  ],
+  "*.{js,ts,vue,css,scss,json,md,yml}": [
+    "prettier --write"
+  ]
+},
   "dependencies": {
     "@iconify-json/lucide": "^1.2.39",
     "@iconify-json/simple-icons": "^1.2.33",
@@ -27,6 +36,8 @@
     "@vue/eslint-config-typescript": "^14.5.0",
     "eslint": "^9.25.1",
     "eslint-plugin-vue": "^10.1.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
     "prettier-plugin-packagejson": "^2.5.10",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "^5.8.3",
