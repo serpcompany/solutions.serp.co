@@ -4,7 +4,11 @@ run-name: studio nuxt build
 on:
   # Runs on pushes targeting the default branch
   push:
-
+    paths-ignore:
+      - 'README.md'
+      - '.github/**'
+      - '.gitignore'
+      - '.vscode/**'
     branches:
       - 'main'
 
