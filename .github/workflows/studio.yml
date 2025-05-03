@@ -1,10 +1,10 @@
-
 name: studio-nuxt-build
 run-name: studio nuxt build
 
 on:
   # Runs on pushes targeting the default branch
   push:
+
     branches:
       - 'main'
 
@@ -62,7 +62,8 @@ jobs:
         run: npx nuxi build --preset github_pages
         env:
           NUXT_CONTENT_PREVIEW_API: https://api.nuxt.studio
-          
+          NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
+
 
       # Deployment job
       - name: Deploy 🚀
