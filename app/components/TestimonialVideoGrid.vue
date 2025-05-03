@@ -8,13 +8,12 @@
       videoId: string;
     }[];
   }>();
-
-
 </script>
 
 <template>
   <UPageSection class="py-8">
     <h2
+      id="success-stories"
       class="mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white"
     >
       Success Stories
@@ -27,11 +26,10 @@
       >
         <div class="relative aspect-video w-full overflow-hidden">
           <SScriptYouTubePlayer
-          v-if="video.videoId"
-          ref="video"
-          @ready="isLoaded = true"
-          @state-change="stateChange"
-
+            v-if="video.videoId"
+            ref="video"
+            @ready="isLoaded = true"
+            @state-change="stateChange"
             :video-id="video.videoId"
             :player-vars="{
               autoplay: 0,

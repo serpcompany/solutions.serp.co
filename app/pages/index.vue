@@ -904,6 +904,21 @@
   function stateChange(event: { data: number }) {
     isPlaying.value = event.data === 1;
   }
+
+  const links = ref([
+    {
+      label: 'Get started',
+      to: '/discovery/',
+      icon: 'i-lucide-square-play'
+    },
+    {
+      label: 'Learn more',
+      to: '/lp/growth-report/',
+      color: 'neutral',
+      variant: 'subtle',
+      trailingIcon: 'i-lucide-arrow-right'
+    }
+  ]);
 </script>
 
 <template>
@@ -912,11 +927,22 @@
       title="SERP Solutions"
       description="Growth & automation solutions that help brands succeed online."
       orientation="vertical"
+      :links="links"
+      :ui="{
+        container:
+          'flex flex-col lg:grid py-24 sm:py-32 lg:py-64 gap-16 sm:gap-y-24'
+      }"
     />
 
     <TestimonialVideoGrid :videos="testimonialVideoData" />
 
     <UPageSection>
+      <h2
+        id="testimonials"
+        class="mb-4 text-center text-2xl font-bold text-gray-900 dark:text-white"
+      >
+        Testimonials
+      </h2>
       <UPageColumns>
         <LazyUPageCard
           v-for="(testimonial, index) in testimonials"

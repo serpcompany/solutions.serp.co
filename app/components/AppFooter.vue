@@ -1,57 +1,78 @@
 <script setup lang="ts">
-const columns = [{
-  label: 'Resources',
-  children: [{
-    label: 'Help center'
-  }, {
-    label: 'Docs'
-  }, {
-    label: 'Roadmap'
-  }, {
-    label: 'Changelog'
-  }]
-}, {
-  label: 'Features',
-  children: [{
-    label: 'Affiliates'
-  }, {
-    label: 'Portal'
-  }, {
-    label: 'Jobs'
-  }, {
-    label: 'Sponsors'
-  }]
-}, {
-  label: 'Company',
-  children: [{
-    label: 'About'
-  }, {
-    label: 'Pricing'
-  }, {
-    label: 'Careers'
-  }, {
-    label: 'Blog'
-  }]
-}]
+  const columns = [
+    {
+      label: 'Resources',
+      children: [
+        {
+          label: 'About'
+        },
+        {
+          label: 'Docs'
+        },
+        {
+          label: 'Roadmap'
+        },
+        {
+          label: 'Changelog'
+        }
+      ]
+    },
+    {
+      label: 'Features',
+      children: [
+        {
+          label: 'Affiliates'
+        },
+        {
+          label: 'Portal'
+        },
+        {
+          label: 'Jobs'
+        },
+        {
+          label: 'Sponsors'
+        }
+      ]
+    },
+    {
+      label: 'Company',
+      children: [
+        {
+          label: 'About'
+        },
+        {
+          label: 'Pricing'
+        },
+        {
+          label: 'Careers'
+        },
+        {
+          label: 'Blog'
+        }
+      ]
+    }
+  ];
 
-const toast = useToast()
+  const toast = useToast();
 
-const email = ref('')
-const loading = ref(false)
+  const email = ref('');
+  const loading = ref(false);
 
-function onSubmit() {
-  loading.value = true
+  function onSubmit() {
+    loading.value = true;
 
-  toast.add({
-    title: 'Subscribed!',
-    description: 'You\'ve been subscribed to our newsletter.'
-  })
-}
+    toast.add({
+      title: 'Subscribed!',
+      description: "You've been subscribed to our newsletter."
+    });
+  }
 </script>
 
 <template>
   <USeparator
-    icon="i-simple-icons-nuxtdotjs"
+    :avatar="{
+      src: 'https://embeds.serp.co/serp-arrow.svg'
+    }"
     class="h-px"
   />
 
@@ -73,11 +94,7 @@ function onSubmit() {
                   placeholder="Enter your email"
                 >
                   <template #trailing>
-                    <UButton
-                      type="submit"
-                      size="xs"
-                      label="Subscribe"
-                    />
+                    <UButton type="submit" size="xs" label="Subscribe" />
                   </template>
                 </UInput>
               </UFormField>
@@ -88,8 +105,9 @@ function onSubmit() {
     </template>
 
     <template #left>
-      <p class="text-sm text-muted">
-        Copyright © {{ new Date().getFullYear() }}. All rights reserved.
+      <p class="text-muted text-sm">
+        Copyright © <NuxtLink to="https://serp.co">SERP</NuxtLink>
+        {{ new Date().getFullYear() }}. All rights reserved.
       </p>
     </template>
 

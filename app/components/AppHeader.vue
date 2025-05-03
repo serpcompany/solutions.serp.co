@@ -1,69 +1,56 @@
 <script setup lang="ts">
-const nuxtApp = useNuxtApp()
-const { activeHeadings, updateHeadings } = useScrollspy()
+  const nuxtApp = useNuxtApp();
+  const { activeHeadings, updateHeadings } = useScrollspy();
 
-const items = computed(() => [{
-  label: 'Features',
-  to: '#features',
-  active: activeHeadings.value.includes('features') && !activeHeadings.value.includes('pricing')
-}, {
-  label: 'Pricing',
-  to: '#pricing',
-  active: activeHeadings.value.includes('pricing')
-}, {
-  label: 'Testimonials',
-  to: '#testimonials',
-  active: activeHeadings.value.includes('testimonials') && !activeHeadings.value.includes('pricing')
-}])
+  const items = computed(() => [
+    {
+      label: 'Success',
+      to: '#success-stories',
+      active:
+        activeHeadings.value.includes('testimonials') &&
+        !activeHeadings.value.includes('pricing')
+    },
+    {
+      label: 'Testimonials',
+      to: '#',
+      active:
+        activeHeadings.value.includes('features') &&
+        !activeHeadings.value.includes('pricing')
+    }
+  ]);
 
-nuxtApp.hooks.hookOnce('page:finish', () => {
-  updateHeadings([
-    document.querySelector('#features'),
-    document.querySelector('#pricing'),
-    document.querySelector('#testimonials')
-  ].filter(Boolean) as Element[])
-})
+  nuxtApp.hooks.hookOnce('page:finish', () => {
+    updateHeadings(
+      [
+        document.querySelector('#features'),
+        document.querySelector('#pricing'),
+        document.querySelector('#testimonials')
+      ].filter(Boolean) as Element[]
+    );
+  });
 </script>
 
 <template>
   <UHeader>
     <template #left>
       <NuxtLink to="/">
-        <LogoPro class="w-auto h-6 shrink-0" />
+        <LogoPro class="h-6 w-auto shrink-0" />
       </NuxtLink>
 
       <TemplateMenu />
     </template>
 
     <template #right>
-      <UNavigationMenu
-        :items="items"
-        variant="link"
-        class="hidden lg:block"
-      />
+      <UNavigationMenu :items="items" variant="link" class="hidden lg:block" />
 
-      <UButton
-        label="Get Started"
-        variant="subtle"
-        class="hidden lg:block"
-      />
+      <UButton label="Get Started" variant="subtle" class="hidden lg:block" />
 
-      <UColorModeButton />
+      <!-- <UColorModeButton /> -->
     </template>
 
     <template #body>
-      <UNavigationMenu
-        :items="items"
-        orientation="vertical"
-        class="-mx-2.5"
-      />
-      <UButton
-        class="mt-4"
-        label="Get Started"
-
-        variant="subtle"
-        block
-      />
+      <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
+      <UButton class="mt-4" label="Get Started" variant="subtle" block />
     </template>
   </UHeader>
 </template>
