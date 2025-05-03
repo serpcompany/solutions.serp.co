@@ -6,20 +6,26 @@
     "build": "nuxt build",
     "dev": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "NODE_OPTIONS='--no-warnings=ExperimentalWarning' eslint . --fix",
-    "typecheck": "nuxt typecheck",
-     "prepare": "husky install"
+    "prepare": "husky install",
+    "preview": "nuxt preview",
+    "typecheck": "nuxt typecheck"
   },
   "lint-staged": {
-  "*.{js,ts,vue}": [
-    "eslint --fix"
-  ],
-  "*.{js,ts,vue,css,scss,json,md,yml}": [
-    "prettier --write"
-  ]
-},
+    "*.{js,ts,vue}": [
+      "eslint --fix"
+    ],
+    "*.{js,ts,vue,css,scss,json,md,yml}": [
+      "prettier --write"
+    ],
+    "*.{ts,vue}": [
+      "nuxt typecheck --no-cache"
+    ]
+  },
+  "resolutions": {
+    "unimport": "4.1.1"
+  },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.39",
     "@iconify-json/simple-icons": "^1.2.33",
@@ -43,9 +49,7 @@
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.10"
   },
-  "resolutions": {
-    "unimport": "4.1.1"
-  },
+  "packageManager": "pnpm@10.10.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "better-sqlite3"
@@ -53,6 +57,5 @@
     "ignoredBuiltDependencies": [
       "vue-demi"
     ]
-  },
-  "packageManager": "pnpm@10.10.0"
+  }
 }
