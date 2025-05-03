@@ -910,12 +910,12 @@
   const links = ref<ButtonProps[]>([
     {
       label: 'Get started',
-      to: '/discovery/',
+      to: '#',
       icon: 'i-lucide-square-play'
     },
     {
       label: 'Learn more',
-      to: '/lp/growth-report/',
+      to: '#',
       color: 'neutral',
       variant: 'subtle',
       trailingIcon: 'i-lucide-arrow-right'
