@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { ref, onMounted } from 'vue';
+
   defineProps<{
     videos: {
       personName: string;
@@ -8,6 +10,18 @@
       videoId: string;
     }[];
   }>();
+
+  // Add safe array of video refs
+  const videoRefs = ref<HTMLElement[]>([]);
+
+  // Function to register each video ref as it's mounted
+  const setVideoRef = (el: HTMLElement | null, index: number) => {
+    if (el) {
+      if (!videoRefs.value[index]) {
+        videoRefs.value[index] = el;
+      }
+    }
+  };
 </script>
 
 <template>
@@ -27,7 +41,7 @@
         <div class="relative aspect-video w-full overflow-hidden">
           <SScriptYouTubePlayer
             v-if="video.videoId"
-            ref="video"
+            :ref="(el) => setVideoRef(el as HTMLElement, index)"
             :video-id="video.videoId"
             :player-vars="{
               autoplay: 0,

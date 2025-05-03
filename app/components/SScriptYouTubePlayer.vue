@@ -31,6 +31,7 @@
     }
   );
 
+  // Define emits with TypeScript types
   const emits = defineEmits<{
     ready: [e: YT.PlayerEvent];
     'state-change': [e: YT.OnStateChangeEvent, target: YT.Player];
@@ -62,32 +63,59 @@
     load();
 
     onLoaded(async (instance) => {
-      const YouTube =
-        instance.YT instanceof Promise ? await instance.YT : instance.YT;
-      await new Promise<void>((resolve) => {
-        if (typeof YT.Player === 'undefined') YouTube.ready(resolve);
-        else resolve();
-      });
-      player.value = new YT.Player(youtubeEl.value!, {
-        videoId: props.videoId,
-        playerVars: props.playerVars,
-        width: props.width,
-        height: props.height,
-        events: Object.fromEntries(
-          events.map((event) => [
-            event,
-            (e: unknown) => {
-              const name = event
-                .replace(/([A-Z])/g, '-$1')
-                .replace('on-', '')
-                .toLowerCase();
-              // @ts-expect-error
-              emits(name, e as any);
-              if (event === 'onReady') ready.value = true;
+      try {
+        if (!youtubeEl.value) {
+          console.warn('YouTube element reference is not available');
+          return;
+        }
+
+        const YouTube =
+          instance.YT instanceof Promise ? await instance.YT : instance.YT;
+
+        await new Promise<void>((resolve) => {
+          if (typeof YouTube?.Player === 'undefined') {
+            if (typeof YouTube?.ready === 'function') {
+              YouTube.ready(resolve);
+            } else {
+              // If YouTube.ready is not available, resolve after a short delay
+              setTimeout(resolve, 100);
             }
-          ])
-        )
-      });
+          } else {
+            resolve();
+          }
+        });
+
+        // Check again after waiting to ensure elements exist
+        if (!youtubeEl.value || typeof YT?.Player === 'undefined') {
+          console.warn(
+            'Failed to initialize YouTube player: missing dependencies'
+          );
+          return;
+        }
+
+        player.value = new YT.Player(youtubeEl.value, {
+          videoId: props.videoId,
+          playerVars: props.playerVars,
+          width: props.width,
+          height: props.height,
+          events: Object.fromEntries(
+            events.map((event) => [
+              event,
+              (e: unknown) => {
+                const name = event
+                  .replace(/([A-Z])/g, '-$1')
+                  .replace('on-', '')
+                  .toLowerCase();
+                // @ts-expect-error
+                emits(name, e as any);
+                if (event === 'onReady') ready.value = true;
+              }
+            ])
+          )
+        });
+      } catch (err) {
+        console.error('Error initializing YouTube player:', err);
+      }
     });
   });
 

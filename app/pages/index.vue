@@ -901,8 +901,12 @@
   const isLoaded = ref(false);
   const isPlaying = ref(false);
   const video = ref();
-  function stateChange(event: { data: number }) {
-    isPlaying.value = event.data === 1;
+
+  // Safe function to handle state changes with null checks
+  function stateChange(event: { data: number } | null | undefined) {
+    if (event && typeof event.data === 'number') {
+      isPlaying.value = event.data === 1;
+    }
   }
 
   import type { ButtonProps } from '@nuxt/ui';
