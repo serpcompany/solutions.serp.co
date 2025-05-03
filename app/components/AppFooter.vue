@@ -95,23 +95,23 @@ function onSubmit() {
 
     <template #right>
       <UButton
-        to="#"
+        to="https://serp.ly/@devinschumacher/youtube"
         target="_blank"
-        icon="i-simple-icons-discord"
-        aria-label="Discord"
+        icon="i-simple-icons-youtube"
+        aria-label="Youtube"
         color="neutral"
         variant="ghost"
       />
       <UButton
-        to="#"
+        to="https://www.linkedin.com/company/serpcompany"
         target="_blank"
-        icon="i-simple-icons-x"
+        icon="i-simple-icons-linkedin"
         aria-label="X"
         color="neutral"
         variant="ghost"
       />
       <UButton
-        to="https://github.com/nuxt-ui-pro/landing"
+        to="https://github.com/serp-ai"
         target="_blank"
         icon="i-simple-icons-github"
         aria-label="GitHub"
