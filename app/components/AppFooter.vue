@@ -1,19 +1,16 @@
 <script setup lang="ts">
   const columns = [
     {
-      label: 'Resources',
+      label: 'Solutions',
       children: [
         {
-          label: 'About'
+          label: 'Growth'
         },
         {
-          label: 'Docs'
+          label: 'Automation'
         },
         {
-          label: 'Roadmap'
-        },
-        {
-          label: 'Changelog'
+          label: 'Partner Program'
         }
       ]
     },
@@ -77,7 +74,7 @@
   />
 
   <UFooter :ui="{ top: 'border-b border-default' }">
-    <template #top>
+    <!-- <template #top>
       <UContainer>
         <UFooterColumns :columns="columns">
           <template #right>
@@ -102,7 +99,7 @@
           </template>
         </UFooterColumns>
       </UContainer>
-    </template>
+    </template> -->
 
     <template #left>
       <p class="text-muted text-sm">
