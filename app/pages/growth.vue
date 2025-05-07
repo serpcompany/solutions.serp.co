@@ -1,8 +1,8 @@
 <template>
   <UPage>
     <UPageHero
-      title="GUARANTEED BUSINESS GROWTH"
-      description="Growing a business is tough. We make it easier by exploding your organic traffic and flooding your business with customers eager to buy. With the most effective SEO system for rapidly scaling companies in the world."
+      title="GROWTH SOLUTIONS"
+      description="Growing a business is tough. We make it easier by plugging in proven growth systems right into your business that will help you get more reach, convert more traffic into leads, and  convert those leads into sales."
       orientation="vertical"
       :ui="{
         title:
