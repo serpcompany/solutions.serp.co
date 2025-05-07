@@ -898,9 +898,8 @@
       videoId: '1gt0U4PHs4Y'
     }
   ];
-  const isLoaded = ref(false);
+
   const isPlaying = ref(false);
-  const video = ref();
 
   // Safe function to handle state changes with null checks
   function stateChange(event: { data: number } | null | undefined) {
