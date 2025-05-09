@@ -1,74 +1,86 @@
+## <!-- content/growth.md -->
+
+title: GROWTH SOLUTIONS
+description: Growing a business is tough. We make it easier by plugging in proven growth systems right into your business that will help you get more reach, convert more traffic into leads, and convert those leads into sales.
+videoId: GTaOBy7mxF0
+socialProofCards:
+
+- id: 1
+  title: Revenue Generated
+  value: $200M+
+  description: The proof is in the pudding. And we've got a hundred million pounds of it.
+- id: 2
+  title: Impact
+  value: 1,312+
+  description: Our mission is to help one million brands grow. We aren't there yet, but we're getting closer every day.
+- id: 3
+  title: Diversity
+  value: 217
+  description: Proven results for businesses in 217+ different industries/niches.
+- id: 4
+  title: 12 Mo. Growth Record
+  value: 6,987.5%
+  description: Our current 1-year growth record using only free traffic from SEO.
+
 ---
-title: Take Control of Your [Business Growth]{.text-primary}
-description: Discover how to build reliable, sustainable growth systems for your business
----
 
-## Welcome Business Builder,
+::page-hero
+#title
+GROWTH SOLUTIONS
 
-And Congratulations. You're in a very unique position right now.
+#description
+Growing a business is tough. We make it easier by plugging in proven growth systems right into your business that will help you get more reach, convert more traffic into leads, and convert those leads into sales.
+::
 
-Now, I must warn you about something:
+::featured-ribbon
+::
 
-A business that doesn't control their growth...
+::
 
-That doesn't have a predictable, reliable and scientifically dependable way to profitably acquire new buyers (ie: clients, customers, users, patients, cases, etc.)...
+::section-10x-growth
+::
 
-That 'business' is at risk **of extinction.**
+::featured-logos
+::
 
-Because everyday your business is not growing, your business is shrinking.
+::section-fortune-500
+::
 
-It's called 'churn'.
+::section-partnership
+#tagline
+NO MORE 'PAY-AND-PRAY' MARKETING
 
-And it applies to every business, every industry, every country and everybody.
+#heading
+THE POWER IS IN THE PARTNERSHIP
 
-And it's only a matter of time before you shrink down to a level where you can't pay for your overhead, or expenses rise just high enough that your profit margins get too slim...
+Most marketing campaigns fail because they focus on one aspect of growth: Marketing.
 
-And then you have to make poor decisions based on scarcity and circumstance, rather than strategy.
+Because truth be told: There's a lot of companies out there who can "run ads", "build websites", "write blogs", "get leads", and do just about a billion other things that can work to grow your business...
 
-**And to take that one step further**:
+But if you want to actually succeed in turning traffic into revenue (and do it profitably) marketing alone is NOT enough to guide your business through the issues you will soon encounter.
 
-I would dare to say that a business that is not in control of their growth is not really a business - it's simply your hobby.
+Here's why: In business, and most things in life, when you solve one problem another one presents itself.
 
-Or at best, your expertise.
+When it comes to growing a business, even if you manage to "do some marketing" that brings new traffic into your business, it creates a couple more problems that most businesses aren't equipped to solve (because they've never had to deal with marketing traffic before).
 
-**And that brings us to this very unique position you're in:**
+(Most marketing companies aren't equipped, or willing, to solve them either).
 
-A position of choice.
+These problems are the 'gap' between the stage where traditional marketing accountability ends (at the 'get traffic and leads' part) and the stage where a business owner actually needs to get for marketing to make sense (at the make an ROI stage).
 
-Where you can choose what kind of control you want over the growth of your sales, and the fate of your business.
+"Closing this gap" has been the key ingredient that's allowed us to generate over $200M in sales (and counting) for ourselves and our clients - and consistently, predictably, and profitably double businesses in 90 days, and 10x them in 6-12 months.
 
-Will you leave the fate of your business to chance... **Or choice**?
+We do this through our trademarked Partnership Marketing™ approach.
+::
 
-Most business owners never even get this option – but you do.
+::section-seo-secrets
+#badge
+BREAKING NEWS: SEO MORE ALIVE THAN EVER
 
-My name's Devin Schumacher, and I run SERP.
+#heading
+INSIDER SEO TRADE-SECRETS THAT OPEN THE FLOODGATES TO FREE GOOGLE TRAFFIC
 
-And in the video above I pull back the curtain to show, in forensic like detail, exactly how we create & deploy growth systems for businesses help them 2x, 3x, 5x, and even 10x at record speeds...
+#content
+While everyone else is running around screaming 'SEO is dead' and 'Google's algorithms are unpredictable' we're sitting back, completely relaxed, getting more free organic traffic from search engines faster than ever.
 
-But it's not just about growth.
-
-**Because anyone can create a 'flash in the pan' success.**
-
-What we do is build reliable, sustainable, future-proof machines that allow businesses to take full control over their growth while securing their longevity and be in command of their future.
-
-And not leaving something as important as **the future of your business**, to something like chance. But rather to **choice**.
-
-And whether you're looking to follow a proven roadmap to growth...
-
-Or reach the 7-figure revenue mark (that only 3.28% of all small businesses ever do)...
-
-Or you simply want a way to future-proof your business against increasing competition, rising ad costs, and economic uncertainties...
-
-I'd like to give you the option to **choose.**
-
-All you have to do is start by making **one small choice**: the choice to watch the video above.
-
-This short video shows you how to **dramatically increase your sales**, add **predictability to your growth**, **establish yourself as a marketplace authority** and **take command of the future of your business**.
-
-Hope to see you there,
-
-![Devin Schumacher Signature](https://web.archive.org/web/20220120035657im_/https://serp.co/wp-content/uploads/2021/08/devin-signature.png)
-
-**Devin Schumacher**
-
-Founder & Head of Growth, SERP
+**How?** Because Google is an algorithm. And algorithms are math. And like any mathematical equation, when you have the correct formula, you get the correct answer - every time. We put that formula into a free report for you to download that reveals the most powerful SEO secrets to open the floodgates to organic traffic.
+::

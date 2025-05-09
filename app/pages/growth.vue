@@ -1,52 +1,40 @@
+<!-- app/pages/growth.vue -->
 <script setup lang="ts">
-  const { data: growth } = await useAsyncData(() =>
-    queryCollection('content').path('/growth').first()
-  );
+  const route = useRoute();
+  const { data: page } = await useAsyncData(route.path, () => {
+    return queryCollection('content').path('/growth').first();
+  });
 
-  const socialProofCards = [
-    {
-      id: 1,
-      title: 'Revenue Generated',
-      value: '$200M+',
-      description:
-        'The proof is in the pudding. And we’ve got a hundred million pounds of it.'
-    },
-    {
-      id: 2,
-      title: 'Impact',
-      value: '1,312+',
-      description:
-        'Our mission is to help one million brands grow. We aren’t there yet, but we’re getting closer every day.'
-    },
-    {
-      id: 3,
-      title: 'Diversity',
-      value: '217',
-      description:
-        'Proven results for businesses in 217+ different industries/niches.'
-    },
-    {
-      id: 4,
-      title: '12 Mo. Growth Record',
-      value: '6,987.5%',
-      description:
-        'Our current 1-year growth record using only free traffic from SEO.'
-    }
-  ];
+  // Make page data available to components
+  provide('pageData', page);
 
-  const seoBookCtaLinks = ref([
-    {
-      label: 'Get Free Report',
-      color: 'primary'
+  useSeoMeta({
+    title: page.value?.title,
+    description: page.value?.description
+  });
+
+  // Define types for social proof cards
+  interface SocialProofCard {
+    id: number;
+    title: string;
+    value: string;
+    description: string;
+  }
+
+  const socialProofCards = computed<SocialProofCard[]>(() => {
+    if (page.value && 'socialProofCards' in page.value) {
+      return (page.value.socialProofCards as SocialProofCard[]) || [];
     }
-  ]);
+    return [];
+  });
 </script>
 
 <template>
   <UPage>
+    <!-- Hero section -->
     <UPageHero
       title="GROWTH SOLUTIONS"
-      description="Growing a business is tough. We make it easier by plugging in proven growth systems right into your business that will help you get more reach, convert more traffic into leads, and  convert those leads into sales."
+      description="Growing a business is tough. We make it easier by plugging in proven growth systems right into your business that will help you get more reach, convert more traffic into leads, and convert those leads into sales."
       orientation="vertical"
       :ui="{
         title:
@@ -56,7 +44,7 @@
     >
       <div class="flex justify-center">
         <SScriptYouTubePlayer
-          :video-id="'GTaOBy7mxF0'"
+          :video-id="(page.value && 'videoId' in page.value) ? (page.value.videoId as string) : 'GTaOBy7mxF0'"
           above-the-fold
           :player-vars="{
             autoplay: 0,
@@ -78,13 +66,6 @@
       />
     </div>
 
-    <!-- article 1 -->
-    <UContainer class="max-w-3xl">
-      <article class="prose prose-lg max-w-none">
-        <ContentRenderer v-if="growth" :value="growth" />
-      </article>
-    </UContainer>
-
     <!-- 10x with seo -->
     <div class="bg-gray-100 py-24">
       <div class="mx-auto max-w-4xl">
@@ -97,10 +78,10 @@
           Why do our clients consistently see 2x, 5x, 10x (and even 70x) growth
           faster & more consistently than anyone else on the internet?
           <br /><br />
-          Because we have a proven system that works every time, and it’s
-          guaranteed. For us SEO isn’t guesswork – it’s an equation.
+          Because we have a proven system that works every time, and it's
+          guaranteed. For us SEO isn't guesswork – it's an equation.
           <br /><br />
-          And if you’re serious about growing your business, you should get
+          And if you're serious about growing your business, you should get
           serious about knowing the solution to growing PREDICTABLY.
         </p>
       </div>
@@ -128,6 +109,7 @@
       </div>
     </div>
 
+    <!-- Fortune 500 section -->
     <div class="mx-auto max-w-3xl">
       <h2
         class="mb-6 max-w-3xl text-center font-black tracking-tight text-pretty text-black sm:text-6xl md:text-7xl"
@@ -157,7 +139,7 @@
         <h2 class="text-center font-bold uppercase">BRAND EXPERIENCE</h2>
         <img
           src="/images/serp-client-logo-grid.png"
-          alt="Featured in logo grid"
+          alt="Client logo grid"
           class="mx-auto px-10 py-4"
         />
       </div>

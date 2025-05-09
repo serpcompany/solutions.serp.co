@@ -19,6 +19,37 @@ export default defineNuxtConfig({
     }
   },
 
+  content: {
+    // Properly configure MDC
+    markdown: {
+      remarkPlugins: [],
+      rehypePlugins: []
+    },
+    // Add Preview API for Nuxt Studio
+    preview: {
+      api: 'https://api.nuxt.studio',
+      gitInfo: {
+        name: 'solutions.serp.co',
+        owner: 'serpcompany',
+        url: 'https://github.com/serpcompany/solutions.serp.co'
+      }
+    }
+  },
+
+  components: {
+    dirs: [
+      {
+        path: '~/components',
+        global: true
+      },
+      {
+        path: '~/components/content',
+        global: true,
+        pathPrefix: false
+      }
+    ]
+  },
+
   future: {
     compatibilityVersion: 4
   },
