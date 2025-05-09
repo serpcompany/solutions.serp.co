@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="bg-white py-24">
+  <div class="bg-white dark:bg-gray-950 py-24">
     <UPageHero
       :title="$slots.title ? undefined : pageData?.value?.title"
       :description="
@@ -14,12 +14,12 @@
       orientation="vertical"
       class="mx-auto max-w-6xl"
       :ui="{
-        wrapper: 'py-8',
+        base: 'py-8',
         container: 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8',
         title:
-          'sm:text-7xl md:text-8xl text-pretty tracking-tight font-black text-black text-center',
+          'sm:text-7xl md:text-8xl text-pretty tracking-tight font-black text-black dark:text-white text-center',
         description:
-          'text-lg sm:text-xl/8 text-balance max-w-3xl mx-auto text-center mt-6 mb-16'
+          'text-lg sm:text-xl/8 text-balance max-w-3xl mx-auto text-center mt-6 mb-16 dark:text-gray-300'
       }"
     >
       <template #title v-if="$slots.title">

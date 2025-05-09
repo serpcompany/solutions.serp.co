@@ -4,17 +4,17 @@
 </script>
 
 <template>
-  <div class="w-full bg-gray-100 py-24 sm:py-32">
+  <div class="w-full bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
     <UContainer>
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div
-          class="mb-6 text-center text-sm font-semibold tracking-wide text-gray-600 uppercase"
+          class="mb-6 text-center text-sm font-semibold tracking-wide text-gray-600 dark:text-gray-400 uppercase"
         >
           <slot name="tagline">NO MORE 'PAY-AND-PRAY' MARKETING</slot>
         </div>
 
         <h2
-          class="mb-12 text-center text-5xl font-black tracking-tight text-black sm:text-6xl md:text-7xl"
+          class="mb-12 text-center text-5xl font-black tracking-tight text-black dark:text-white sm:text-6xl md:text-7xl"
         >
           <slot name="heading">THE POWER IS IN THE PARTNERSHIP</slot>
         </h2>
@@ -22,13 +22,13 @@
         <div class="space-y-6">
           <div
             v-if="$slots.default"
-            class="mx-auto max-w-3xl space-y-4 text-xl leading-relaxed text-gray-700"
+            class="mx-auto max-w-3xl space-y-4 text-xl leading-relaxed text-gray-700 dark:text-gray-300"
           >
             <slot />
           </div>
           <div
             v-else
-            class="mx-auto max-w-3xl space-y-4 text-xl leading-relaxed text-gray-700"
+            class="mx-auto max-w-3xl space-y-4 text-xl leading-relaxed text-gray-700 dark:text-gray-300"
           >
             <p>
               Most marketing campaigns fail because they focus on one aspect of

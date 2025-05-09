@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <div class="w-full bg-white py-20 sm:py-28">
+  <div class="w-full bg-white dark:bg-gray-950 py-20 sm:py-28">
     <UContainer>
       <div class="mb-10 flex justify-center">
         <UBadge
@@ -24,7 +24,7 @@
 
       <div class="mb-20 flex flex-col items-center">
         <h2
-          class="max-w-5xl text-center text-4xl font-black tracking-tight text-black sm:text-5xl md:text-6xl"
+          class="max-w-5xl text-center text-4xl font-black tracking-tight text-black dark:text-white sm:text-5xl md:text-6xl"
         >
           <slot name="heading"
             >INSIDER SEO TRADE-SECRETS THAT OPEN THE FLOODGATES TO FREE GOOGLE
@@ -40,12 +40,12 @@
           <img
             src="/images/seo-playbook.png"
             alt="SEO Playbook"
-            class="w-full max-w-xs transform shadow-lg transition-transform duration-300 hover:scale-105 md:max-w-sm"
+            class="w-full max-w-xs transform shadow-lg transition-transform duration-300 hover:scale-105 md:max-w-sm dark:shadow-gray-800"
           />
         </div>
 
         <div class="flex flex-col space-y-8">
-          <div class="space-y-4 text-xl leading-relaxed text-gray-700">
+          <div class="space-y-4 text-xl leading-relaxed text-gray-700 dark:text-gray-300">
             <p>
               While everyone else is running around screaming 'SEO is dead' and
               'Google's algorithms are unpredictable' we're sitting back,
@@ -63,11 +63,11 @@
             </p>
           </div>
 
-          <div class="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6">
-            <h3 class="mb-4 text-xl font-bold">
+          <div class="mt-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-6">
+            <h3 class="mb-4 text-xl font-bold dark:text-white">
               Download Your Free SEO Playbook
             </h3>
-            <p class="mb-4">
+            <p class="mb-4 dark:text-gray-300">
               Get instant access to our proven SEO strategies that have
               generated millions in revenue.
             </p>
@@ -92,10 +92,10 @@
             </div>
 
             <div v-else class="py-4 text-center">
-              <p class="text-success-600 mb-2 font-semibold">
+              <p class="text-success-600 dark:text-success-400 mb-2 font-semibold">
                 Thanks for subscribing!
               </p>
-              <p>Check your email for your download link.</p>
+              <p class="dark:text-gray-300">Check your email for your download link.</p>
             </div>
           </div>
         </div>

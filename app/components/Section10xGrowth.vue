@@ -5,16 +5,16 @@
 </script>
 
 <template>
-  <div class="bg-gray-50 py-24">
+  <div class="bg-gray-50 dark:bg-gray-900 py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <h2
-        class="max-w-4xl text-center font-black tracking-tight text-pretty text-black sm:text-6xl md:text-7xl"
+        class="max-w-4xl text-center font-black tracking-tight text-pretty text-black dark:text-white sm:text-6xl md:text-7xl"
       >
         10X GROWTH WITH
-        <u class="underline decoration-black decoration-2">FREE TRAFFIC</u> FROM
+        <u class="underline decoration-2 decoration-black dark:decoration-white">FREE TRAFFIC</u> FROM
         SEARCH ENGINES
       </h2>
-      <p class="mx-auto mt-8 max-w-3xl text-center text-xl leading-relaxed">
+      <p class="mx-auto mt-8 max-w-3xl text-center text-xl leading-relaxed dark:text-gray-300">
         Why do our clients consistently see 2x, 5x, 10x (and even 70x) growth
         faster & more consistently than anyone else on the internet?
         <br /><br />
@@ -34,16 +34,16 @@
           :key="card.id"
           class="border-0 p-8 shadow-sm"
           :ui="{
-            base: 'bg-white rounded-xl',
+            base: 'bg-white dark:bg-gray-800 rounded-xl',
             body: { base: 'flex flex-col h-full' }
           }"
         >
-          <h3 class="mb-2 text-lg font-semibold text-gray-600">
+          <h3 class="mb-2 text-lg font-semibold text-gray-600 dark:text-gray-300">
             {{ card.title }}
           </h3>
           <div class="mb-4 w-12 border-b-2 border-blue-500"></div>
-          <p class="mb-3 text-5xl font-bold text-black">{{ card.value }}</p>
-          <p class="text-sm text-gray-700">{{ card.description }}</p>
+          <p class="mb-3 text-5xl font-bold text-black dark:text-white">{{ card.value }}</p>
+          <p class="text-sm text-gray-700 dark:text-gray-400">{{ card.description }}</p>
         </UCard>
       </div>
     </UContainer>
