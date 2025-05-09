@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="bg-gray-50 dark:bg-gray-900 py-24">
+  <div class="bg-gray-50 dark:bg-gray-800 py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <h2
         class="max-w-4xl text-center font-black tracking-tight text-pretty text-black dark:text-white sm:text-6xl md:text-7xl"
@@ -14,7 +14,7 @@
         <u class="underline decoration-2 decoration-black dark:decoration-white">FREE TRAFFIC</u> FROM
         SEARCH ENGINES
       </h2>
-      <p class="mx-auto mt-8 max-w-3xl text-center text-xl leading-relaxed dark:text-gray-300">
+      <p class="mx-auto mt-8 max-w-3xl text-center text-xl leading-relaxed text-gray-700 dark:text-gray-200">
         Why do our clients consistently see 2x, 5x, 10x (and even 70x) growth
         faster & more consistently than anyone else on the internet?
         <br /><br />
@@ -34,7 +34,7 @@
           :key="card.id"
           class="border-0 p-8 shadow-sm"
           :ui="{
-            base: 'bg-white dark:bg-gray-800 rounded-xl',
+            base: 'bg-white dark:bg-gray-700 rounded-xl',
             body: { base: 'flex flex-col h-full' }
           }"
         >

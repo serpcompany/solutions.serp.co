@@ -10,7 +10,7 @@
 </script>
 
 <template>
-  <div class="w-full bg-white dark:bg-gray-950 py-20 sm:py-28">
+  <div class="w-full bg-white dark:bg-gray-900 py-20 sm:py-28">
     <UContainer>
       <div class="mb-10 flex justify-center">
         <UBadge
@@ -45,7 +45,7 @@
         </div>
 
         <div class="flex flex-col space-y-8">
-          <div class="space-y-4 text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+          <div class="space-y-4 text-xl leading-relaxed text-gray-700 dark:text-gray-200">
             <p>
               While everyone else is running around screaming 'SEO is dead' and
               'Google's algorithms are unpredictable' we're sitting back,
@@ -63,7 +63,7 @@
             </p>
           </div>
 
-          <div class="mt-8 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 p-6">
+          <div class="mt-8 rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-6">
             <h3 class="mb-4 text-xl font-bold dark:text-white">
               Download Your Free SEO Playbook
             </h3>

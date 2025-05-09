@@ -1,6 +1,6 @@
 <!-- components/content/SectionFortune500.vue -->
 <template>
-  <div class="bg-white dark:bg-gray-950 py-24">
+  <div class="bg-white dark:bg-gray-900 py-24">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <h2
         class="mb-8 text-center font-black tracking-tight text-pretty text-black dark:text-white sm:text-6xl md:text-7xl"
@@ -10,7 +10,7 @@
       </h2>
 
       <p
-        class="mx-auto mt-10 max-w-3xl text-center text-xl leading-relaxed text-gray-700 dark:text-gray-300"
+        class="mx-auto mt-10 max-w-3xl text-center text-xl leading-relaxed text-gray-700 dark:text-gray-200"
       >
         How different would your business be today if you had a team of the
         world's top business growth experts & digital marketers in your corner
@@ -29,7 +29,7 @@
       <div class="mt-20 w-full">
         <div class="mx-auto mb-8">
           <h3
-            class="mb-10 text-center font-bold tracking-wider text-gray-600 dark:text-gray-400 uppercase"
+            class="mb-10 text-center font-bold tracking-wider text-gray-600 dark:text-gray-300 uppercase"
           >
             BRAND EXPERIENCE
           </h3>
