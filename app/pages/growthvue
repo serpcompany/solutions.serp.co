@@ -1,7 +1,8 @@
 <script setup lang="ts">
-  const { data: growth } = await useAsyncData(() =>
-    queryCollection('content').path('/growth').first()
-  );
+  const route = useRoute();
+  const { data: page } = await useAsyncData(route.path, () => {
+    return queryCollection('content').path(route.path).first();
+  });
 
   const socialProofCards = [
     {

@@ -4,53 +4,72 @@
 
   const items = computed(() => [
     {
-      label: 'Success',
-      to: '#success-stories',
-      active:
-        activeHeadings.value.includes('testimonials') &&
-        !activeHeadings.value.includes('pricing')
+      label: 'Products',
+      to: '#products'
     },
     {
-      label: 'Testimonials',
-      to: '#',
-      active:
-        activeHeadings.value.includes('features') &&
-        !activeHeadings.value.includes('pricing')
+      label: 'Solutions',
+      to: '#solutions'
+    },
+    {
+      label: 'For Agencies',
+      to: '#agencies'
+    },
+    {
+      label: 'Resources',
+      to: '#resources'
+    },
+    {
+      label: 'Pricing',
+      to: '#pricing'
     }
   ]);
 
   nuxtApp.hooks.hookOnce('page:finish', () => {
     updateHeadings(
       [
-        document.querySelector('#features'),
-        document.querySelector('#pricing'),
-        document.querySelector('#testimonials')
+        document.querySelector('#products'),
+        document.querySelector('#solutions'),
+        document.querySelector('#agencies'),
+        document.querySelector('#resources'),
+        document.querySelector('#pricing')
       ].filter(Boolean) as Element[]
     );
   });
 </script>
 
 <template>
-  <UHeader>
+  <UHeader :ui="{ root: 'bg-white dark:bg-gray-950 py-4', container: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' }">
     <template #left>
       <NuxtLink to="/">
-        <LogoPro class="h-6 w-auto shrink-0" />
+        <LogoPro class="h-8 w-auto shrink-0" />
       </NuxtLink>
 
-      <TemplateMenu />
+      <TemplateMenu class="ml-8" />
     </template>
 
     <template #right>
-      <UNavigationMenu :items="items" variant="link" class="hidden lg:block" />
+      <UNavigationMenu
+        :items="items"
+        variant="link"
+        class="hidden lg:flex mr-6"
+        :ui="{ item: { active: 'font-semibold', base: 'font-medium text-base mx-3' } }"
+      />
 
-      <UButton label="Get Started" variant="subtle" class="hidden lg:block" />
+      <UButton
+        label="Get Started"
+        variant="solid"
+        color="primary"
+        class="hidden lg:block"
+        size="lg"
+      />
 
-      <UColorModeButton />
+      <UColorModeButton class="ml-4" />
     </template>
 
     <template #body>
       <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
-      <UButton class="mt-4" label="Get Started" variant="subtle" block />
+      <UButton class="mt-4" label="Get Started" variant="solid" color="primary" block />
     </template>
   </UHeader>
 </template>

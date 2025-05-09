@@ -5,7 +5,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui-pro',
     '@nuxt/content',
-    '@nuxt/scripts'
+    '@nuxt/scripts',
+    '@nuxthq/studio'
   ],
   devtools: {
     enabled: true
@@ -17,6 +18,42 @@ export default defineNuxtConfig({
     highlight: {
       noApiRoute: false
     }
+  },
+
+  content: {
+    // Add Preview API for Nuxt Studio
+    preview: {
+      api: 'https://api.nuxt.studio',
+      gitInfo: {
+        name: 'solutions.serp.co',
+        owner: 'serpcompany',
+        url: 'https://github.com/serpcompany/solutions.serp.co'
+      }
+    }
+  },
+
+  // Configure Nuxt Studio
+  studio: {
+    enabled: true,
+    gitInfo: {
+      name: 'solutions.serp.co',
+      owner: 'serpcompany',
+      url: 'https://github.com/serpcompany/solutions.serp.co'
+    }
+  },
+
+  components: {
+    dirs: [
+      {
+        path: '~/components',
+        global: true
+      },
+      {
+        path: '~/components/content',
+        global: true,
+        pathPrefix: false
+      }
+    ]
   },
 
   future: {
