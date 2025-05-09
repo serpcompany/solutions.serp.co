@@ -25,3 +25,5 @@ logs
 
 #VSC
 .history
+
+**/.claude/settings.local.json
