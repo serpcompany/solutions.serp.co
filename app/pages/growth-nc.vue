@@ -2,7 +2,7 @@
 <script setup lang="ts">
   const route = useRoute();
 
-  // Define types for page content
+  // Define types for content
   interface PageContent {
     title: string;
     description?: string;
@@ -27,7 +27,7 @@
   provide('pageData', page);
 
   useSeoMeta({
-    title: page.value?.title || '',
+    title: page.value?.title || 'Growth Solutions',
     description: page.value?.description || ''
   });
 
