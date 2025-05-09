@@ -44,7 +44,7 @@
     >
       <div class="flex justify-center">
         <SScriptYouTubePlayer
-          :video-id="(page.value && 'videoId' in page.value) ? (page.value.videoId as string) : 'GTaOBy7mxF0'"
+          :video-id="'GTaOBy7mxF0'"
           above-the-fold
           :player-vars="{
             autoplay: 0,

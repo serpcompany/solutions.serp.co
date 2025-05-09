@@ -14,7 +14,7 @@
       orientation="vertical"
       class="mx-auto max-w-6xl"
       :ui="{
-        base: 'py-8',
+        root: 'py-8',
         container: 'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8',
         title:
           'sm:text-7xl md:text-8xl text-pretty tracking-tight font-black text-black dark:text-white text-center',

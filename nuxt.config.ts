@@ -21,11 +21,6 @@ export default defineNuxtConfig({
   },
 
   content: {
-    // Properly configure MDC
-    markdown: {
-      remarkPlugins: [],
-      rehypePlugins: []
-    },
     // Add Preview API for Nuxt Studio
     preview: {
       api: 'https://api.nuxt.studio',

@@ -39,7 +39,7 @@
 </script>
 
 <template>
-  <UHeader :ui="{ base: 'bg-white dark:bg-gray-950 py-4', container: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' }">
+  <UHeader :ui="{ root: 'bg-white dark:bg-gray-950 py-4', container: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' }">
     <template #left>
       <NuxtLink to="/">
         <LogoPro class="h-8 w-auto shrink-0" />
