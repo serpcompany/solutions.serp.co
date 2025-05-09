@@ -53,10 +53,12 @@ jobs:
         if: ${{ steps.pkgman.outputs.package_manager == 'pnpm' }}
         name: Install pnpm
         id: pnpm-install
+        with:
+          version: 10.10.0
 
       - uses: actions/setup-node@v4
         with:
-          version: ${{ matrix.node }}
+          node-version: ${{ matrix.node }}
           cache: ${{ steps.pkgman.outputs.cache }}
 
       - name: Install dependencies
