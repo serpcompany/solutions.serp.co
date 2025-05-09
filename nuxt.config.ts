@@ -20,8 +20,12 @@ export default defineNuxtConfig({
   },
 
   content: {
-    // Configure Content v3 Studio integration
-    studio: true,
+    // Configure Content Studio integration
+    studio: {
+      title: 'SERP Solutions',
+      logo: '/logos/serp-wordmark-light.svg',
+      icon: '/favicon.ico'
+    },
     // Add Preview API for Nuxt Studio
     preview: {
       api: 'https://api.nuxt.studio',
