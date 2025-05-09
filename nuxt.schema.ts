@@ -1,4 +1,7 @@
-import { field, group } from '@nuxt/content/preview';
+// Studio schemas temporarily disabled due to @nuxt/content/preview compatibility issues
+// import { field, group } from '@nuxt/content/preview';
+const field = (options: any) => options;
+const group = (options: any) => options;
 
 export default defineNuxtSchema({
   appConfig: {
@@ -35,8 +38,8 @@ export default defineNuxtSchema({
                 'purple',
                 'fuchsia',
                 'pink',
-                'rose',
-              ],
+                'rose'
+              ]
             }),
             neutral: field({
               type: 'string',
@@ -44,13 +47,13 @@ export default defineNuxtSchema({
               description: 'Neutral color of your UI.',
               icon: 'i-mdi-palette-outline',
               default: 'slate',
-              required: ['slate', 'gray', 'zinc', 'neutral', 'stone'],
-            }),
-          },
-        }),
-      },
-    }),
-  },
+              required: ['slate', 'gray', 'zinc', 'neutral', 'stone']
+            })
+          }
+        })
+      }
+    })
+  }
 });
 
 declare module '@nuxt/schema' {

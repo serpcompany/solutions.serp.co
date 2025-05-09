@@ -1,17 +1,14 @@
 <!-- app/pages/growth.vue -->
 <script setup lang="ts">
   const route = useRoute();
-  const { data: page } = await useAsyncData(route.path, () => {
-    return queryCollection('content').path('/growth').first();
-  });
 
-  // Make page data available to components
-  provide('pageData', page);
-
-  useSeoMeta({
-    title: page.value?.title,
-    description: page.value?.description
-  });
+  // Define types for page content
+  interface PageContent {
+    title: string;
+    description?: string;
+    videoId?: string;
+    socialProofCards?: SocialProofCard[];
+  }
 
   // Define types for social proof cards
   interface SocialProofCard {
@@ -21,11 +18,21 @@
     description: string;
   }
 
+  // Use queryContent instead of queryCollection
+  const { data: page } = await useAsyncData<PageContent>(route.path, () => {
+    return queryContent('/growth').findOne() as Promise<PageContent>;
+  });
+
+  // Make page data available to components
+  provide('pageData', page);
+
+  useSeoMeta({
+    title: page.value?.title || '',
+    description: page.value?.description || ''
+  });
+
   const socialProofCards = computed<SocialProofCard[]>(() => {
-    if (page.value && 'socialProofCards' in page.value) {
-      return (page.value.socialProofCards as SocialProofCard[]) || [];
-    }
-    return [];
+    return page.value?.socialProofCards || [];
   });
 </script>
 
